@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app='chatApp'>
   <head>
     <title>Socket.IO chat</title>
     <style>
@@ -7,32 +7,247 @@
       body { font: 13px Helvetica, Arial; }
       form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      .on { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      .off {display: none}
+      .board { width: 700px; height: 600px; position: fixed; background-color: blue; display: flex; flex-direction: row;}
+      .column { list-style-type: none; width: 100px; height: 600px; border: 1px black solid;}
+      .column:hover {border-color: yellow;}
+      .slot {height: 100px; width: 100px; border: 1px black solid; z-index: 99;}
+      .red {height: 100px; width: 100px; border: 1px black solid; z-index: 99; background-color: red; border-radius: 50px;}
+      .black {height: 100px; width: 100px; border: 1px black solid; z-index: 99; background-color: black; border-radius: 50px;}
+      .list {float: right; width: 20%; height: 89%; border-left: 1px black solid;}
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
     </style>
   </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+  <body ng-controller='MessagesIndexController as vm'>
+    <div class='list'>
+      <ul id="messages">
+        <li ng-repeat='message in vm.messages track by $index'>{{message}}</li>
+      </ul>
+    </div>
+    <div class='board'>
+      <ul class='column' ng-click='vm.sendMessage()'>
+
+        <li class="slot" ng-repeat='slot in vm.column1.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+      <ul class='column' ng-click='vm.sendMessage2()'>
+
+        <li class="slot" ng-repeat='slot in vm.column2.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+      <ul class='column' ng-click='vm.sendMessage3()'>
+
+        <li class="slot" ng-repeat='slot in vm.column3.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+      <ul class='column' ng-click='vm.sendMessage4()'>
+
+        <li class="slot" ng-repeat='slot in vm.column4.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+      <ul class='column' ng-click='vm.sendMessage5()'>
+
+        <li class="slot" ng-repeat='slot in vm.column5.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+      <ul class='column' ng-click='vm.sendMessage6()'>
+
+        <li class="slot" ng-repeat='slot in vm.column6.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+      <ul class='column' ng-click='vm.sendMessage7()'>
+
+        <li class="slot" ng-repeat='slot in vm.column7.slice().reverse() track by $index' ng-class='{red: slot === 1, black: slot === 2}'>
+
+        </li>
+      </ul>
+    </div>
+
+    <form>
+      <input ng-model='vm.newMessage' id="m" autocomplete="off" />
     </form>
 
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
     <script>
-    $(() => {
-      var socket = io()
-      $('form').submit(() => {
-        socket.emit('chat message', $('#m').val())
-        $('#m').val('')
-        return false
-      })
-      socket.on('chat message', (msg) => {
-        $('#messages').append($('<li>').text(msg))
-      })
-    })
+    var socket = io()
+      angular.module('chatApp', [])
+        .controller('MessagesIndexController', [
+          '$scope',
+          MessagesIndexControllerFunction
+        ])
+
+        function MessagesIndexControllerFunction ($scope) {
+          this.messages = this.messages || []
+          this.turn = false
+          this.count = 0
+          this.column1 = this.column1 || [0, 0, 0, 0, 0, 0]
+          this.column2 = this.column2 || [0, 0, 0, 0, 0, 0]
+          this.column3 = this.column3 || [0, 0, 0, 0, 0, 0]
+          this.column4 = this.column4 || [0, 0, 0, 0, 0, 0]
+          this.column5 = this.column5 || [0, 0, 0, 0, 0, 0]
+          this.column6 = this.column6 || [0, 0, 0, 0, 0, 0]
+          this.column7 = this.column7 || [0, 0, 0, 0, 0, 0]
+          this.newMessage = ''
+          this.sendMessage = () => {
+            socket.emit('chat message', this.newMessage)
+            this.newMessage = ''
+          }
+          this.sendMessage2 = () => {
+            socket.emit('chat message2', this.newMessage)
+            this.newMessage = ''
+          }
+          this.sendMessage3 = () => {
+            socket.emit('chat message3', this.newMessage)
+            this.newMessage = ''
+          }
+          this.sendMessage4 = () => {
+            socket.emit('chat message4', this.newMessage)
+            this.newMessage = ''
+          }
+          this.sendMessage5 = () => {
+            socket.emit('chat message5', this.newMessage)
+            this.newMessage = ''
+          }
+          this.sendMessage6 = () => {
+            socket.emit('chat message6', this.newMessage)
+            this.newMessage = ''
+          }
+          this.sendMessage7 = () => {
+            socket.emit('chat message7', this.newMessage)
+            this.newMessage = ''
+          }
+
+          socket.on('chat message', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column1.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column1[index] = 1
+                console.log(this.column1)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column1[index] = 2
+                console.log(this.column1)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+              // this.column1.push('test')
+              // if (this.messages.length > 15) {
+              //   this.messages.shift()
+              // }
+            })
+          })
+          socket.on('chat message2', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column2.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column2[index] = 1
+                console.log(this.column2)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column2[index] = 2
+                console.log(this.column2)
+                console.log(this.count)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+            })
+          })
+          socket.on('chat message3', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column3.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column3[index] = 1
+                console.log(this.column3)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column3[index] = 2
+                console.log(this.column3)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+            })
+          })
+          socket.on('chat message4', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column4.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column4[index] = 1
+                console.log(this.column4)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column4[index] = 2
+                console.log(this.column4)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+            })
+          })
+          socket.on('chat message5', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column5.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column5[index] = 1
+                console.log(this.column5)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column5[index] = 2
+                console.log(this.column2)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+            })
+          })
+          socket.on('chat message6', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column6.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column6[index] = 1
+                console.log(this.column6)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column6[index] = 2
+                console.log(this.column6)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+            })
+          })
+          socket.on('chat message7', (msg) => {
+            $scope.$apply(() => {
+              this.messages.unshift(msg)
+              var index = this.column7.indexOf(0)
+              if (index !== -1 && this.turn === false) {
+                this.column7[index] = 1
+                console.log(this.column6)
+              }
+              if (index !== -1 && this.turn === true) {
+                this.column7[index] = 2
+                console.log(this.column7)
+              }
+              this.turn = !this.turn
+              this.count = this.count + 1
+            })
+          })
+        }
+
+
     </script>
   </body>
 </html>
