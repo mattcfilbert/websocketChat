@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app='chatApp'>
   <head>
-    <title>Socket.IO chat</title>
+    <title>A slot at love! ♥</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -22,6 +22,7 @@
     </style>
   </head>
   <body ng-controller='MessagesIndexController as vm'>
+    <img src="loveslot.png" alt="Connect 2-by-4: A slot at love!">
     <div class='list'>
       <ul id="messages">
         <li ng-repeat='message in vm.messages track by $index'>{{message}}</li>
