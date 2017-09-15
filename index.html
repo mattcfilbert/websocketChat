@@ -139,6 +139,10 @@
 
           socket.on('chat message', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column1.indexOf(0)
               if (index !== -1 && this.turn === false) {
@@ -159,6 +163,10 @@
           })
           socket.on('chat message2', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column2.indexOf(0)
               if (index !== -1 && this.turn === false) {
@@ -176,6 +184,10 @@
           })
           socket.on('chat message3', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column3.indexOf(0)
               if (index !== -1 && this.turn === false) {
@@ -192,6 +204,10 @@
           })
           socket.on('chat message4', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column4.indexOf(0)
               if (index !== -1 && this.turn === false) {
@@ -208,6 +224,10 @@
           })
           socket.on('chat message5', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column5.indexOf(0)
               if (index !== -1 && this.turn === false) {
@@ -224,6 +244,10 @@
           })
           socket.on('chat message6', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column6.indexOf(0)
               if (index !== -1 && this.turn === false) {
@@ -240,6 +264,10 @@
           })
           socket.on('chat message7', (msg) => {
             $scope.$apply(() => {
+              var test = msg.toLowerCase()
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
+                msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
+              }
               this.messages.unshift(msg)
               var index = this.column7.indexOf(0)
               if (index !== -1 && this.turn === false) {
