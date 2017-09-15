@@ -19,10 +19,11 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      img { height: 200px;}
     </style>
   </head>
   <body ng-controller='MessagesIndexController as vm'>
-    <img src="loveslot.png" alt="Connect 2-by-4: A slot at love!">
+    <img src="https://i.imgur.com/FKieHrN.png" alt="Connect 2-by-4: A slot at love!">
     <div class='list'>
       <ul id="messages">
         <li ng-repeat='message in vm.messages track by $index'>{{message}}</li>
