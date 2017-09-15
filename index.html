@@ -1,12 +1,15 @@
 <!doctype html>
 <html ng-app='chatApp'>
   <head>
-    <title>Socket.IO chat</title>
+    <title>A slot at love! ♥</title>
+    <link rel="icon"
+      type="image/png"
+      href="https://i.imgur.com/FKieHrN.png">
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; height: 10%;}
+      form input { border: 1px red solid; padding: 10px; width: 90%; margin-right: .5%;}
       .on { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       .off {display: none}
       .board { width: 700px; height: 600px; position: fixed; background-color: blue; display: flex; flex-direction: row;}
@@ -15,14 +18,19 @@
       .slot {height: 100px; width: 100px; border: 1px black solid; z-index: 99;}
       .red {height: 100px; width: 100px; border: 1px black solid; z-index: 99; background-color: red; border-radius: 50px;}
       .black {height: 100px; width: 100px; border: 1px black solid; z-index: 99; background-color: black; border-radius: 50px;}
-      .list {float: right; width: 20%; height: 89%; border-left: 1px black solid;}
+      .list {float: right; width: 30%; height: 89%; border-left: 1px black solid;}
       #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
+      #messages li { padding: 5px 10px; font-size: 25px;}
       #messages li:nth-child(odd) { background: #eee; }
+      img { height: 150px; border-bottom: 1px black solid; }
+      label {color: white; font-size: 30px;}
+      h2 { text-decoration: underline; text-align: center; border-bottom: 1px black solid;}
     </style>
   </head>
   <body ng-controller='MessagesIndexController as vm'>
     <div class='list'>
+        <img src="https://i.imgur.com/FKieHrN.png" alt="Connect 2-by-4: A slot at love!">
+        <h2>Messages</h2>
       <ul id="messages">
         <li ng-repeat='message in vm.messages track by $index'>{{message}}</li>
       </ul>
@@ -73,6 +81,7 @@
     </div>
 
     <form>
+          <label>Type your messages below and then send them by making your move above! #slotAtLove</label>
       <input ng-model='vm.newMessage' id="m" autocomplete="off" />
     </form>
 
