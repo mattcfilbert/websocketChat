@@ -115,38 +115,52 @@
           this.column7 = this.column7 || [0, 0, 0, 0, 0, 0]
           this.newMessage = ''
           this.sendMessage = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message', this.newMessage)
             this.newMessage = ''
+            }
           }
           this.sendMessage2 = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message2', this.newMessage)
             this.newMessage = ''
+            }
           }
           this.sendMessage3 = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message3', this.newMessage)
             this.newMessage = ''
+            }
           }
           this.sendMessage4 = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message4', this.newMessage)
             this.newMessage = ''
+            }
           }
           this.sendMessage5 = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message5', this.newMessage)
             this.newMessage = ''
+            }
           }
           this.sendMessage6 = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message6', this.newMessage)
             this.newMessage = ''
+            }
           }
           this.sendMessage7 = () => {
+            if (this.newMessage !== '') {
             socket.emit('chat message7', this.newMessage)
             this.newMessage = ''
+            }
           }
 
           socket.on('chat message', (msg) => {
             $scope.$apply(() => {
               var test = msg.toLowerCase()
-              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup') {
+              if (test === 'hey' || test === 'yo' || test === 'hi' || test === 'sup' || test === 'hello') {
                 msg = 'I am a terribly uninteresting conversationalist and require a shitty computer program to talk for me.'
               }
               this.messages.unshift(msg)
