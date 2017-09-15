@@ -12,13 +12,13 @@
       form input { border: 1px red solid; padding: 10px; width: 90%; margin-right: .5%;}
       .on { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       .off {display: none}
-      .board { width: 700px; height: 600px; position: fixed; background-color: blue; display: flex; flex-direction: row;}
+      .board { margin-top: 9%; margin-left: 3%; width: 700px; height: 600px; position: fixed; background-color: blue; display: flex; flex-direction: row;}
       .column { list-style-type: none; width: 100px; height: 600px; border: 1px black solid;}
       .column:hover {border-color: yellow;}
       .slot {height: 100px; width: 100px; border: 1px black solid; z-index: 99;}
       .red {height: 100px; width: 100px; border: 1px black solid; z-index: 99; background-color: red; border-radius: 50px;}
       .black {height: 100px; width: 100px; border: 1px black solid; z-index: 99; background-color: black; border-radius: 50px;}
-      .list {float: right; width: 30%; height: 89%; border-left: 1px black solid;}
+      .list {float: right; width: 30%; height: 89%; border-left: 1px black solid; margin-top: 7%; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; font-size: 25px;}
       #messages li:nth-child(odd) { background: #eee; }
@@ -81,7 +81,7 @@
     </div>
 
     <form>
-          <label>Type your messages below and then send them by making your move above! #slotAtLove</label>
+          <label>Type your messages below and then send them by making your move! #slotAtLove</label>
       <input ng-model='vm.newMessage' id="m" autocomplete="off" />
     </form>
 
