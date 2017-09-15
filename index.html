@@ -22,13 +22,13 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; font-size: 25px;}
       #messages li:nth-child(odd) { background: #eee; }
-      img { height: 100px;}
+      img { height: 150px;}
       label {color: white; font-size: 30px;}
     </style>
   </head>
   <body ng-controller='MessagesIndexController as vm'>
-    <img src="https://i.imgur.com/FKieHrN.png" alt="Connect 2-by-4: A slot at love!">
     <div class='list'>
+        <img src="https://i.imgur.com/FKieHrN.png" alt="Connect 2-by-4: A slot at love!">
       <ul id="messages">
         <li ng-repeat='message in vm.messages track by $index'>{{message}}</li>
       </ul>
